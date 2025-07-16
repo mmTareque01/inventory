@@ -3,8 +3,6 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import Card from "../../card/Card";
 
-import "./ProductForm.scss";
-
 const ProductForm = ({
   product,
   productImage,
@@ -16,69 +14,74 @@ const ProductForm = ({
   saveProduct,
 }) => {
   return (
-    <div className="add-product">
-      <Card cardClass={"card"}>
-        <form onSubmit={saveProduct}>
-          <Card cardClass={"group"}>
-            <label>Product Image</label>
-            <code className="--color-dark">
-              Supported Formats: jpg, jpeg, png
-            </code>
+    <div className="mb-20 ">
+      <Card className="w-full max-w-[500px] px-4">
+        <form onSubmit={saveProduct} className=" ">
+          <Card className="border border-blue-900 p-1">
+            <label className="block text-lg font-medium text-gray-900">Product Image: 
+            <code className="text-gray-900">
+              {" Supported Formats: jpg, jpeg, png"}
+            </code></label>
             <input
               type="file"
               name="image"
+              className="block w-full text-base font-light p-4 my-4 border border-gray-500 rounded-md outline-none"
               onChange={(e) => handleImageChange(e)}
             />
 
             {imagePreview != null ? (
-              <div className="image-preview">
-                <img src={imagePreview} alt="product" />
+              <div className="w-full h-full max-h-[280px] bg-blue-900 p-4 rounded-md overflow-hidden transition-all duration-300">
+                <img src={imagePreview} alt="product" className="w-full" />
               </div>
             ) : (
               <p>No image set for this poduct.</p>
             )}
           </Card>
-          <label>Product Name:</label>
+          <label className="block text-lg font-medium text-gray-900">Product Name:</label>
           <input
             type="text"
             placeholder="Product name"
             name="name"
+            className="block w-full text-base font-light p-4 my-4 border border-gray-500 rounded-md outline-none"
             // value={product?.name}
             value={'Pure Coke'}
             onChange={handleInputChange}
           />
 
-          <label>Product Category:</label>
+          <label className="block text-lg font-medium text-gray-900">Product Category:</label>
           <input
             type="text"
             placeholder="Product Category"
             name="category"
+            className="block w-full text-base font-light p-4 my-4 border border-gray-500 rounded-md outline-none"
             // value={product?.category}
             value={'Coke'}
             onChange={handleInputChange}
           />
 
-          <label>Product Price:</label>
+          <label className="block text-lg font-medium text-gray-900">Product Price:</label>
           <input
             type="text"
             placeholder="Product Price"
             name="price"
+            className="block w-full text-base font-light p-4 my-4 border border-gray-500 rounded-md outline-none"
             // value={product?.price}
             value={'3.50'}
             onChange={handleInputChange}
           />
 
-          <label>Product Quantity:</label>
+          <label className="block text-lg font-medium text-gray-900">Product Quantity:</label>
           <input
             type="text"
             placeholder="Product Quantity"
             name="quantity"
+            className="block w-full text-base font-light p-4 my-4 border border-gray-500 rounded-md outline-none"
             // value={product?.quantity}
             value={'19'}
             onChange={handleInputChange}
           />
 
-          <label>Product Description:</label>
+          <label className="block text-lg font-medium text-gray-900">Product Description:</label>
           <ReactQuill
             theme="snow"
             // value={description}
@@ -88,8 +91,8 @@ const ProductForm = ({
             formats={ProductForm.formats}
           />
 
-          <div className="--my">
-            <button type="submit" className="--btn --btn-primary">
+          <div className="my-6">
+            <button type="submit" className="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800">
               Save Product
             </button>
           </div>

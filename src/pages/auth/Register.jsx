@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import styles from "./auth.module.scss";
 import { TiUserAddOutline } from "react-icons/ti";
 import Card from "../../components/card/Card";
 import { toast } from "react-toastify";
-import { registerUser, validateEmail } from "../../services/authService";
+// import { registerUser, validateEmail } from "../../services/authService";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { SET_LOGIN, SET_NAME } from "../../redux/features/auth/authSlice";
+// import { SET_LOGIN, SET_NAME } from "../../redux/features/auth/authSlice";
 import Loader from "../../components/loader/Loader";
 
 const initialState = {
@@ -29,7 +28,7 @@ const Register = () => {
   };
 
   const register = async (e) => {
-    // e.preventDefault();
+    e.preventDefault();
 
     // if (!name || !email || !password) {
     //   return toast.error("All fields are required");
@@ -52,7 +51,6 @@ const Register = () => {
     // setIsLoading(true);
     // try {
     //   const data = await registerUser(userData);
-    //   // console.log(data);
     //   await dispatch(SET_LOGIN(true));
     //   await dispatch(SET_NAME(data.name));
     //   navigate("/dashboard");
@@ -63,16 +61,16 @@ const Register = () => {
   };
 
   return (
-    <div className={`container ${styles.auth}`}>
+    <div className="min-h-[80vh] flex justify-center items-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {isLoading && <Loader />}
       <Card>
-        <div className={styles.form}>
-          <div className="--flex-center">
-            <TiUserAddOutline size={35} color="#999" />
+        <div className="w-full max-w-md p-6 bg-white animate-[slide-up_0.5s_ease]">
+          <div className="flex justify-center">
+            <TiUserAddOutline size={35} className="text-gray-500" />
           </div>
-          <h2>Register</h2>
+          <h2 className="text-center text-2xl font-bold my-4">Register</h2>
 
-          <form onSubmit={register}>
+          <form onSubmit={register} className="space-y-4">
             <input
               type="text"
               placeholder="Name"
@@ -80,6 +78,7 @@ const Register = () => {
               name="name"
               value={name}
               onChange={handleInputChange}
+              className="block w-full p-3 text-base border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200"
             />
             <input
               type="email"
@@ -88,6 +87,7 @@ const Register = () => {
               name="email"
               value={email}
               onChange={handleInputChange}
+              className="block w-full p-3 text-base border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200"
             />
             <input
               type="password"
@@ -96,6 +96,7 @@ const Register = () => {
               name="password"
               value={password}
               onChange={handleInputChange}
+              className="block w-full p-3 text-base border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200"
             />
             <input
               type="password"
@@ -104,17 +105,21 @@ const Register = () => {
               name="password2"
               value={password2}
               onChange={handleInputChange}
+              className="block w-full p-3 text-base border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200"
             />
-            <button type="submit" className="--btn --btn-primary --btn-block">
+            <button 
+              type="submit" 
+              className="w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded transition-colors duration-200"
+            >
               Register
             </button>
           </form>
 
-          <span className={styles.register}>
-            <Link to="/">Home</Link>
-            <p> &nbsp; Already have an account? &nbsp;</p>
-            <Link to="/login">Login</Link>
-          </span>
+          <div className="flex justify-center items-center mt-4 text-sm">
+            <Link to="/" className="text-blue-500 hover:text-blue-600">Home</Link>
+            <p className="mx-2 text-gray-600">Already have an account?</p>
+            <Link to="/login" className="text-blue-500 hover:text-blue-600">Login</Link>
+          </div>
         </div>
       </Card>
     </div>
