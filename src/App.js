@@ -11,6 +11,8 @@ import Layout from "./components/layout/Layout";
 import Dashboard from "./pages/dashboard/Dashboard";
 import AddProduct from "./pages/addProduct/AddProduct";
 import Contact from "./pages/contact/Contact";
+import Profile from "./pages/profile/Profile";
+import EditProfile from "./pages/profile/EditProfile";
 
 function App() {
   return (
@@ -45,7 +47,7 @@ function App() {
           }
         />
 
-        {/* <Route
+        <Route
           path="/profile"
           element={
             <Sidebar>
@@ -54,8 +56,8 @@ function App() {
               </Layout>
             </Sidebar>
           }
-        /> */}
-        {/* <Route
+        />
+        <Route
           path="/edit-profile"
           element={
             <Sidebar>
@@ -64,7 +66,7 @@ function App() {
               </Layout>
             </Sidebar>
           }
-        /> */}
+        />
         <Route
           path="/contact-us"
           element={
